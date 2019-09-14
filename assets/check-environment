@@ -16,7 +16,7 @@ if [ ! -d "${CERTS_DIR}" ]; then
   exit 1
 fi
 
-CERTS_SUBDIRS=(accounts archive csr keys live renewal)
+CERTS_SUBDIRS=(accounts)
 for subdir in "${CERTS_SUBDIRS[@]}"; do
   if [ ! -d "${CERTS_DIR}/${subdir}" ]; then
     echo "The directory [${CERTS_DIR}/${subdir}] does not exist."
