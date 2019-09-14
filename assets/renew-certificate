@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# -----------------------------------------------------
+#
+# This script will RENEW an existing certificate
+#
+# -----------------------------------------------------
+
+echo "We want to RENEW an existing certificate!"
+set -e
+
+# check environment
+check-environment
+
+# renew certificate
+certbot \
+  renew \
+    --authenticator standalone \
+    --preferred-challenges http \
+    --domains ${DOMAIN}

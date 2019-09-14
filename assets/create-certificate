@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# -----------------------------------------------------
+#
+# This script will CREATE a new certificate
+#
+# -----------------------------------------------------
+
+echo "We want to CREATE a new certificate!"
+set -e
+
+# check environment
+check-environment
+
+# create certificate
+certbot \
+  certonly \
+    --authenticator standalone \
+    --preferred-challenges http \
+    --domains ${DOMAIN}

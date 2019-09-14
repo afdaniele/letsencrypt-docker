@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# -----------------------------------------------------
+#
+# This script will provide HELP and exit
+#
+# -----------------------------------------------------
+
+echo """
+Usage:
+
+    docker run -it -p 80:80 -v [letsencrypt_dir]:/etc/letsencrypt/ -e DOMAIN=[domain] afdaniele/letsencrypt [action]
+
+
+Parameters:
+
+    [letsencrypt_dir]       Local directory to letsencrypt data (usually /etc/letsencrypt/)
+
+    [domain]                Domain to manage SSL keys for.
+
+    [action]                Check available actions in the documentation below.
+
+
+Actions:
+
+    create-certificate      Creates a new certificate.
+
+    renew-certificate       Renews an existing certificate.
+"""

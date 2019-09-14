@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# -----------------------------------------------------
+#
+# This script will check and make sure that all the necessary files,
+# directories and libraries are available/installed.
+#
+# -----------------------------------------------------
+
+echo "Checking environment..."
+
+CERTS_DIR='/etc/letsencrypt'
+if [ ! -d "${CERTS_DIR}" ]; then
+  echo "The directory containing the certificates [${CERTS_DIR}] is not present."
+  echo "Exiting..."
+  exit 1
+fi
+
+CERTS_SUBDIRS=(accounts archive csr keys live renewal)
+for subdir in "${CERTS_SUBDIRS[@]}"; do
+  if [ ! -d "${CERTS_DIR}/${subdir}" ]; then
+    echo "The directory [${CERTS_DIR}/${subdir}] does not exist."
+    echo "Exiting..."
+    exit 2
+  fi
+done
+
+if [ -z ${DOMAIN+x} ]; then
+  echo "The environment variable DOMAIN is not set"
+  echo "Exiting..."
+  exit 3
+fi
+
+echo "Environment: OK!"

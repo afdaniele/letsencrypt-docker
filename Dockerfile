@@ -12,6 +12,14 @@ RUN apt update \
   && apt update \
   && apt install -y \
     certbot \
-    python-certbot-apache \
     # clean the apt cache
   && rm -rf /var/lib/apt/lists/*
+
+# copy scripts
+COPY assets/help-certificate /usr/local/bin/
+COPY assets/check-environment /usr/local/bin/
+COPY assets/create-certificate /usr/local/bin/
+COPY assets/renew-certificate /usr/local/bin/
+
+# default to help
+CMD 'help-certificate'
