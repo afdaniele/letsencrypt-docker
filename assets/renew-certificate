@@ -14,7 +14,7 @@ check-environment
 
 # renew certificate
 certbot \
-  renew \
+  certonly \
     --authenticator standalone \
     --preferred-challenges http \
     --domains ${DOMAIN}

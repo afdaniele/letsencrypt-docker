@@ -22,7 +22,7 @@ create-certificate renew-certificate: check-env
 		-v ${DATA}:/etc/letsencrypt/ \
 		-e DOMAIN=${DOMAIN} \
 		--name letsencrypt-running \
-		afdaniele/letsencrypt \
+		afdaniele/letsencrypt:latest \
 			${action}
 
 check-env:
