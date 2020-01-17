@@ -21,7 +21,7 @@ create-certificate renew-certificate: check-env
 		-p 80:80 \
 		-v ${DATA}:/etc/letsencrypt/ \
 		-e DOMAIN=${DOMAIN} \
-		--name letsencrypt-running
+		--name letsencrypt-running \
 		afdaniele/letsencrypt \
 			${action}
 
