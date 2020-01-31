@@ -37,6 +37,7 @@ COPY assets/help-certificate /usr/local/bin/
 COPY assets/check-environment /usr/local/bin/
 COPY assets/create-certificate /usr/local/bin/
 COPY assets/renew-certificate /usr/local/bin/
+COPY assets/create-account /usr/local/bin/
 
 # default to help
 CMD 'help-certificate'
