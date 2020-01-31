@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# -----------------------------------------------------
+#
+# This script will CREATE a new ACME Account
+#
+# -----------------------------------------------------
+
+echo "We want to CREATE a new ACME Account!"
+set -e
+
+# check environment
+CERTS_DIR='/etc/letsencrypt'
+if [ ! -d "${CERTS_DIR}" ]; then
+  echo "The directory containing the certificates [${CERTS_DIR}] is not present."
+  echo "Exiting..."
+  exit 1
+fi
+
+# create certificate
+certbot \
+  register
