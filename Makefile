@@ -1,10 +1,11 @@
 # Created by Andrea F. Daniele
 # ----------------------------------------
 
-IMAGE="afdaniele/letsencrypt"
+ARCH="amd64"
+IMAGE="afdaniele/letsencrypt:latest-${ARCH}"
 
 build:
-	@docker build -t "${IMAGE}" ./
+	@docker build -t "${IMAGE}" --build-arg ARCH=${ARCH} ./
 
 push:
 	@docker push "${IMAGE}"
@@ -22,7 +23,7 @@ create-certificate renew-certificate: check-env
 		-v ${DATA}:/etc/letsencrypt/ \
 		-e DOMAIN=${DOMAIN} \
 		--name letsencrypt-running \
-		afdaniele/letsencrypt:latest \
+		${IMAGE} \
 			${action}
 
 check-env:
